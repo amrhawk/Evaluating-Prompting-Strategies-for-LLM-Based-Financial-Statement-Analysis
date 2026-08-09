@@ -1,0 +1,43 @@
+# Secrets - never commit credentials of any kind
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*_credentials*
+credentials*.json
+secrets*
+apikey*
+token*.txt
+
+# FinanceBench dataset clone (672 MB of PDFs; re-fetch from github.com/patronus-ai/financebench)
+# No trailing slash: this must also match when financebench is a symlink to a
+# clone stored elsewhere, which the directory pattern would not catch.
+financebench
+
+# Copied evaluation PDFs (regenerate with scripts/build_ground_truth.py)
+data/raw_statements/*.pdf
+
+# Ad-hoc uploads made through the Streamlit app's "Upload PDF" mode.
+# The app names these artifacts upload_<filename> (see app.py: process_pdf
+# with doc_name=f"upload_{...}"). They are throwaway test runs on documents
+# that may not belong to this project - never commit them.
+data/processed/upload_*
+data/clean_text_backup/upload_*
+outputs/responses/upload_*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# Local artifacts
+*.log
